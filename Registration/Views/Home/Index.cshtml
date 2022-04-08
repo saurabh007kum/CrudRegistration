@@ -1,0 +1,101 @@
+﻿@using System.Data;
+@model Registration.Models.Property
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<style>
+    .modal-content{
+        width:400px;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-3 bg-secondary">
+        <center><i class="text-warning fs-2 pt-2"> STARK INDUSTRIES</i></center>
+    </div>
+    <div class="col-sm-9">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              Register
+                            </button>                      
+                        </li>
+                        
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i>REGISTER HERE</i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <label>Name:</label>
+                <input type="text" class="form-control" id="Title" placeholder="Enter  Name" />
+                <label>Email :</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" />
+                <label>password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" />
+                <label>password:</label>
+                <input type="date" class="form-control" id="password" placeholder="Enter dob" />
+               </div>
+                <div class="modal-footer">
+                <button type="button" id="btn" class="btn btn-primary">REGISTER</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Sr_No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>dob</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+         @if (Model.dt.Rows.Count > 0 && Model != null)
+          {
+                int i = 1;
+                foreach (DataRow dr in Model.dt.Rows)
+                {
+    <tbody>
+                    i++;
+                    <tr>
+                        <td>@dr["Title"]</td>
+                    </tr>
+    </tbody>
+        
+          }
+                }
+</table>
